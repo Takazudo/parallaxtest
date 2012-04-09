@@ -7,7 +7,7 @@
 module.exports = function(grunt){
 
   grunt.initConfig({
-    parallelwatch: {
+    watch: {
       coffee: {
         files: [
           'src/coffee/*.coffee'
