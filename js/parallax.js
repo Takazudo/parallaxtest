@@ -269,12 +269,47 @@
       st_start: 2000,
       st_end: 3300
     });
-    return mgr.add($('#page4 .b'), {
+    mgr.add($('#page4 .b'), {
       prop: 'top',
       val_start: -600,
       val_end: 1000,
       st_start: 2000,
       st_end: 3300
+    });
+    mgr.add($('#xpage1 .xpage-bg'), {
+      prop: 'top',
+      val_start: 0,
+      val_end: -2000,
+      st_start: 0,
+      st_end: 800
+    });
+    mgr.add($('#xpage2 .xpage-bg'), {
+      prop: 'top',
+      val_start: 0,
+      val_end: -4000,
+      st_start: 0,
+      st_end: 1600
+    });
+    mgr.add($('#xpage3 .xpage-bg'), {
+      prop: 'top',
+      val_start: 0,
+      val_end: -4000,
+      st_start: 800,
+      st_end: 2400
+    });
+    mgr.add($('#xpage4 .xpage-bg'), {
+      prop: 'top',
+      val_start: 0,
+      val_end: -4000,
+      st_start: 1600,
+      st_end: 3200
+    });
+    return mgr.add($('#xpage5 .xpage-bg'), {
+      prop: 'top',
+      val_start: 0,
+      val_end: -4000,
+      st_start: 2400,
+      st_end: 4000
     });
   });
 

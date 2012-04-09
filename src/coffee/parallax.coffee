@@ -49,6 +49,10 @@ class ns.Event
       break
     @
 
+
+# ============================================================
+# ParallaxerItem
+
 class ns.ParallaxerItem
   constructor: (@$el, @options) ->
     o = @options
@@ -71,6 +75,10 @@ class ns.ParallaxerItem
 
   _isAbove: (st) -> st < @options.st_start
   _isBelow: (st) -> st > @options.st_end
+
+
+# ============================================================
+# ParallaxerManager
 
 class ns.ParallaxerManager extends ns.Event
   constructor: ->
@@ -102,6 +110,8 @@ class ns.ParallaxerManager extends ns.Event
     @_items.push item
     @
 
+
+# ============================================================
 
 $.tinyscroller.live()
 
@@ -225,4 +235,37 @@ $ ->
     val_end: 1000
     st_start: 2000
     st_end: 3300
+
+  
+  mgr.add $('#xpage1 .xpage-bg'),
+    prop: 'top'
+    val_start: 0
+    val_end: -2000
+    st_start: 0
+    st_end: 800
+  mgr.add $('#xpage2 .xpage-bg'),
+    prop: 'top'
+    val_start: 0
+    val_end: -4000
+    st_start: 0
+    st_end: 1600
+  mgr.add $('#xpage3 .xpage-bg'),
+    prop: 'top'
+    val_start: 0
+    val_end: -4000
+    st_start: 800
+    st_end: 2400
+  mgr.add $('#xpage4 .xpage-bg'),
+    prop: 'top'
+    val_start: 0
+    val_end: -4000
+    st_start: 1600
+    st_end: 3200
+  mgr.add $('#xpage5 .xpage-bg'),
+    prop: 'top'
+    val_start: 0
+    val_end: -4000
+    st_start: 2400
+    st_end: 4000
+
     
