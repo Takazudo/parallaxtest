@@ -84,23 +84,26 @@ class ns.ParallaxerManager extends ns.Event
       @trigger 'scroll', st
     @
 
-  _hasItemWhoseElIs: ($el) ->
-    found = false
-    $.each @_items, (i, item) ->
-      if item.$el[0] isnt $el[0] then return true
-      found = true
-      false
-    found
+  #_hasItemWhoseElIs: ($el) ->
+  #  found = false
+  #  $.each @_items, (i, item) ->
+  #    if item.$el[0] isnt $el[0] then return true
+  #    found = true
+  #    false
+  #  found
 
   add: ($el, options) ->
     unless $el.size() then return @
     item = new ns.ParallaxerItem $el, options
     @bind 'scroll', (scrollTop) ->
       item.update scrollTop
-    unless @_hasItemWhoseElIs $el
-      item.update $win.scrollTop()
+    #unless @_hasItemWhoseElIs $el
+    item.update $win.scrollTop()
     @_items.push item
     @
+
+
+$.tinyscroller.live()
 
 $ ->
   mgr = new ns.ParallaxerManager
@@ -149,15 +152,28 @@ $ ->
   mgr.add $('#page1 .a'),
     prop: 'left'
     val_start: -600
-    val_end: 100
+    val_end: 300
     st_start: 0
     st_end: 100
   mgr.add $('#page1 .b'),
     prop: 'left'
     val_start: 0
     val_end: 1200
-    st_start: 200
-    st_end: 500
+    st_start: 400
+    st_end: 600
+
+  mgr.add $('#overlayer1 div'),
+    prop: 'top'
+    val_start: 800
+    val_end: 0
+    st_start: 400
+    st_end: 2000
+  mgr.add $('#overlayer1 div'),
+    prop: 'height'
+    val_start: 300
+    val_end: 500
+    st_start: 800
+    st_end: 2000
     
   mgr.add $('#page2'),
     prop: 'margin-top'
@@ -197,4 +213,16 @@ $ ->
     val_end: -500
     st_start: 2000
     st_end: 3000
+  mgr.add $('#page4 .a'),
+    prop: 'left'
+    val_start: 700
+    val_end: 300
+    st_start:2000
+    st_end: 3300
+  mgr.add $('#page4 .b'),
+    prop: 'top'
+    val_start: -600
+    val_end: 1000
+    st_start: 2000
+    st_end: 3300
     

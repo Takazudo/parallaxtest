@@ -136,17 +136,6 @@
       return this;
     };
 
-    ParallaxerManager.prototype._hasItemWhoseElIs = function($el) {
-      var found;
-      found = false;
-      $.each(this._items, function(i, item) {
-        if (item.$el[0] !== $el[0]) return true;
-        found = true;
-        return false;
-      });
-      return found;
-    };
-
     ParallaxerManager.prototype.add = function($el, options) {
       var item;
       if (!$el.size()) return this;
@@ -154,7 +143,7 @@
       this.bind('scroll', function(scrollTop) {
         return item.update(scrollTop);
       });
-      if (!this._hasItemWhoseElIs($el)) item.update($win.scrollTop());
+      item.update($win.scrollTop());
       this._items.push(item);
       return this;
     };
@@ -162,6 +151,8 @@
     return ParallaxerManager;
 
   })(ns.Event);
+
+  $.tinyscroller.live();
 
   $(function() {
     var mgr;
@@ -204,7 +195,7 @@
     mgr.add($('#page1 .a'), {
       prop: 'left',
       val_start: -600,
-      val_end: 100,
+      val_end: 300,
       st_start: 0,
       st_end: 100
     });
@@ -212,8 +203,22 @@
       prop: 'left',
       val_start: 0,
       val_end: 1200,
-      st_start: 200,
-      st_end: 500
+      st_start: 400,
+      st_end: 600
+    });
+    mgr.add($('#overlayer1 div'), {
+      prop: 'top',
+      val_start: 800,
+      val_end: 0,
+      st_start: 400,
+      st_end: 2000
+    });
+    mgr.add($('#overlayer1 div'), {
+      prop: 'height',
+      val_start: 300,
+      val_end: 500,
+      st_start: 800,
+      st_end: 2000
     });
     mgr.add($('#page2'), {
       prop: 'margin-top',
@@ -250,12 +255,26 @@
       st_start: 1200,
       st_end: 2100
     });
-    return mgr.add($('#page4'), {
+    mgr.add($('#page4'), {
       prop: 'margin-top',
       val_start: 0,
       val_end: -500,
       st_start: 2000,
       st_end: 3000
+    });
+    mgr.add($('#page4 .a'), {
+      prop: 'left',
+      val_start: 700,
+      val_end: 300,
+      st_start: 2000,
+      st_end: 3300
+    });
+    return mgr.add($('#page4 .b'), {
+      prop: 'top',
+      val_start: -600,
+      val_end: 1000,
+      st_start: 2000,
+      st_end: 3300
     });
   });
 
