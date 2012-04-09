@@ -10,26 +10,26 @@ module.exports = function(grunt){
     parallelwatch: {
       coffee: {
         files: [
-          '_src/coffee/*.coffee'
+          'src/coffee/*.coffee'
         ],
         tasks: 'coffee notifyOK'
       },
       sass: {
         files: [
-          '_src/scss/*.scss'
+          'src/scss/*.scss'
         ],
         tasks: 'sass notifyOK'
       }
     },
     coffee: {
-      'js/': '_src/coffee/'
+      'js/': 'src/coffee/'
     },
     sass: {
-      'css/style.css': '_src/scss/style.scss'
+      'css/style.css': 'src/scss/style.scss'
     }
   });
 
-  grunt.loadTasks('_grunt/tasks');
+  grunt.loadTasks('src/gruntTasks');
   grunt.registerTask('default', 'coffee sass notifyOK');
 
 };
